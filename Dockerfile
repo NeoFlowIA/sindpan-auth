@@ -1,14 +1,12 @@
 FROM node:20-alpine
 WORKDIR /app
 
-# install build tools for bcrypt
-RUN apk add --no-cache python3 make g++
-
-COPY package.json ./
+# Install deps first for better caching
+COPY package*.json ./
 RUN npm install --omit=dev
 
-COPY ./src ./src
-COPY .env.example ./
+# Copy the rest of the project (must include src/)
+COPY . .
 
 ENV NODE_ENV=production
 EXPOSE 8080
