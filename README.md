@@ -41,8 +41,8 @@ docker run --name sindpan-auth \
 ```
 
 ## Endpoints
-- `POST /auth/register` — `{ email, password, bakery_name? }`
-- `POST /auth/login` — `{ email, password }`
+- `POST /auth/register` — `{ email?, cnpj?, password, bakery_name? }`
+- `POST /auth/login` — `{ email?, cnpj?, password }`
 - `GET /auth/me` — Authorization: `Bearer <token>`
 
 ## Admin opcional
