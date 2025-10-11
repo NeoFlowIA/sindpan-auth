@@ -1,0 +1,16 @@
+-- ATENÇÃO: revisar manualmente antes de rodar em produção.
+-- Objetivo: remover restrições UNIQUE que impeçam múltiplas linhas placeholders por número de série/número_sorte.
+-- Execute somente após validação da equipe de DBA/DevOps.
+-- Exemplo de comandos (ajuste os nomes das constraints conforme existentes no banco):
+--
+--   BEGIN;
+--   ALTER TABLE public.cupons DROP CONSTRAINT IF EXISTS cupons_numero_sorte_key;
+--   ALTER TABLE public.cupons DROP CONSTRAINT IF EXISTS cupons_serie_numero_sorte_key;
+--   COMMIT;
+--
+-- Opcionalmente, crie índice não único para acelerar buscas por série/número:
+--
+--   CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_cupons_serie_numero
+--     ON public.cupons (serie, numero_sorte);
+--
+-- Este arquivo não é executado automaticamente pelo seed. Aplique manualmente se necessário.
