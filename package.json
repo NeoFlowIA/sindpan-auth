@@ -4,7 +4,8 @@
   "type": "module",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "db:seed:cupons": "node scripts/seed_cupons.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
